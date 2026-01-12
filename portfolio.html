@@ -1,1 +1,339 @@
-এখানে আপনার HTML বসাবেন✅
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Mamun Ahmed | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #0ea5e9;
+            --gradient: linear-gradient(135deg, #0ea5e9, #22d3ee, #818cf8, #c084fc);
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #f1f5f9;
+                --card-bg: #ffffff;
+                --text-main: #1e293b;
+                --text-dim: #64748b;
+                --border: rgba(0, 0, 0, 0.05);
+                --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-container {
+            position: relative;
+            width: 148px;
+            height: 148px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#0ea5e9, #22d3ee, #818cf8, #c084fc, #0ea5e9);
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            position: relative;
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            padding: 4px;
+            z-index: 1;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .verified {
+            color: #1d9bf0;
+            font-size: 1.2rem;
+        }
+
+        .bio-typing {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--accent);
+            height: 24px;
+            margin-bottom: 25px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: var(--accent);
+            margin-left: 2px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .info-card {
+            background: var(--bg-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .info-row:last-child { margin-bottom: 0; }
+
+        .label { color: var(--text-dim); font-weight: 400; min-width: 80px; }
+        .value { color: var(--text-main); font-weight: 600; text-align: right; }
+
+        .btn-contact {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: var(--gradient);
+            color: white;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-contact:active { transform: scale(0.97); }
+
+        .contact-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+        }
+
+        .contact-content.active {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .full-width { grid-column: span 2; }
+
+        .social-btn {
+            text-decoration: none;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .bg-facebook { background: #1877f2; }
+        .bg-messenger { background: #0084ff; }
+        .bg-whatsapp { background: #25d366; }
+        .bg-telegram { background: #0088cc; }
+
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        .footer-icons i:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="ring"></div>
+            <div class="profile-img">
+                <img src="https://mild-magenta-sjscbqppe1.edgeone.app/IMG_1767097533920.jpg" alt="MD Mamun Ahmed">
+            </div>
+        </div>
+
+        <h1>
+            MD Mamun Ahmed
+            <span class="fa-stack verified">
+                <i class="fa-solid fa-certificate fa-stack-2x"></i>
+                <i class="fa-solid fa-check fa-stack-1x fa-inverse" style="font-size: 0.5em;"></i>
+            </span>
+        </h1>
+
+        <div class="bio-typing" id="typing-text"></div>
+
+        <div class="info-card">
+            <div class="info-row"><span class="label">Age:</span><span class="value">20</span></div>
+            <div class="info-row"><span class="label">Gender:</span><span class="value">Male</span></div>
+            <div class="info-row"><span class="label">Religion:</span><span class="value">Islam</span></div>
+            <div class="info-row"><span class="label">Country:</span><span class="value">Bangladesh</span></div>
+            <div class="info-row"><span class="label">Address:</span><span class="value">DAWUD PUR, MOULVIBAZAR</span></div>
+        </div>
+
+        <button class="btn-contact" onclick="toggleContact()">
+            Contact Me <i class="fa-solid fa-chevron-down" id="arrow-icon"></i>
+        </button>
+
+        <div class="contact-content" id="contact-section">
+            <div class="grid">
+                <a href="https://www.facebook.com/share/1AEYmHwgif/" class="social-btn bg-facebook full-width">
+                    <i class="fa-brands fa-facebook"></i> Facebook
+                </a>
+                <a href="https://m.me/abdulmamunjoy90" class="social-btn bg-messenger">
+                    <i class="fa-brands fa-facebook-messenger"></i> Messenger
+                </a>
+                <a href="https://wa.me/8801607883120" class="social-btn bg-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://t.me/abdulmamunjoy90" class="social-btn bg-telegram full-width">
+                    <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-text">© 2026 MD Mamun Ahmed. All rights reserved.</p>
+            <div class="footer-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const text = "BIO Assalamu Alaikum 💏";
+        const typingContainer = document.getElementById('typing-text');
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typingContainer.innerHTML = text.slice(0, index + 1) + '<span class="cursor">|</span>';
+                index++;
+                setTimeout(type, 100);
+            } else {
+                typingContainer.innerHTML = text + '<span class="cursor">|</span>';
+            }
+        }
+
+        function toggleContact() {
+            const section = document.getElementById('contact-section');
+            const icon = document.getElementById('arrow-icon');
+            section.classList.toggle('active');
+            
+            if (section.classList.contains('active')) {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        }
+
+        window.onload = type;
+    </script>
+</body>
+</html>
